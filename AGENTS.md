@@ -33,6 +33,32 @@ UnityによるAIエージェント開発検証用プロジェクト。
 - 対象タスクの範囲外を勝手に変更しない
 - 可能な限り小さい差分で実装する
 
+## Validation
+
+コード変更後は可能な場合、以下の順で検証すること。
+
+1. 今回変更したファイルに対して `git diff --check` を実行する。
+
+2. 以下を実行して、起動済みUnity Editorが利用可能であることを確認する。
+
+   `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Tools\Scripts\check-unity.ps1`
+
+3. 以下を実行して、Unity上でコンパイル検証を行う。
+
+   `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Tools\Scripts\validate-unity.ps1 -Mode Compile`
+
+各コマンドの終了コードと出力内容を確認すること。
+
+Unity Editorが利用できない場合、
+Unity.exe、Unity Hub、Unity Licensing Clientを自分で起動・終了・操作してはならない。
+ユーザーへUnity Editorが利用できないことを報告すること。
+
+Unityコンパイル検証に失敗し、
+今回の変更に起因するコンパイルエラーが存在する場合は、
+エラーを修正して再検証すること。
+
+仕様変更によって検証を通してはならない。
+
 ## Completion report
 作業終了時に以下を報告する。
 
